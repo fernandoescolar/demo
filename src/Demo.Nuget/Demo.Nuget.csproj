@@ -10,10 +10,19 @@
     <ToolCommandName>demo</ToolCommandName>
     <Description>A tool to assist you in your presentation terminal demonstrations</Description>
     <ExcludeAssets>runtime</ExcludeAssets>
+    <PackageTags>demo;presentation;terminal;cli</PackageTags>
+    <Authors>Fernando Escolar</Authors>
+    <PackageProjectUrl>https://github.com/fernandoescolar/demo</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Demo\Demo.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../../LICENSE" Pack="true" PackagePath="$(PackageLicenseFile)" />
+    <None Include="icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>
