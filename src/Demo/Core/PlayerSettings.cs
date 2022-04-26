@@ -1,6 +1,6 @@
 namespace Demo.Core;
 
-public class Settings
+public class PlayerSettings
 {
     public string Prompt { get; set; } = "$ ";
     public object TitleColor { get; set; } = "gray";

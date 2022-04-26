@@ -1,12 +1,17 @@
-namespace Demo;
+namespace Demo.Commands;
 
-internal sealed class PlayerCommand : Command<PlayerCommand.Settings>
+internal sealed class PlayCommand : Command<PlayCommand.Settings>
 {
     public sealed class Settings : CommandSettings
     {
         [Description("FilePath to the script file to play.")]
-        [CommandArgument(0, "[filePath]")]
+        [CommandArgument(0, "<filepath>")]
         public string? FilePath { get; init; }
+
+        [Description("(true|false) Add line breaks before command arguments.")]
+        [CommandOption("-b|--line-breaks")]
+        [DefaultValue(true)]
+        public bool CommandArgumentsBreakLine { get; init; }
 
         public override ValidationResult Validate()
         {
@@ -24,7 +29,8 @@ internal sealed class PlayerCommand : Command<PlayerCommand.Settings>
             return 1;
         }
 
-        var player = PlayerFactory.Create();
+        var s = new PlayerSettings { CommandArgumentsBreakLine = settings.CommandArgumentsBreakLine };
+        var player = PlayerFactory.Create(s);
         player.Play(settings.FilePath);
         return 0;
     }

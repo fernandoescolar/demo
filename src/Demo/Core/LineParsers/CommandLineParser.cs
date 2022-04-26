@@ -5,7 +5,7 @@ public class CommandLineParser : ILineParser
     public bool CanParse(string line)
         => line.StartsWith("$", StringComparison.OrdinalIgnoreCase);
 
-    public void Parse(string line, Settings settings)
+    public void Parse(string line, PlayerSettings settings)
     {
         line = line.Substring(1);
         AnsiConsole.Markup(settings.Prompt);
@@ -25,7 +25,7 @@ public class CommandLineParser : ILineParser
         AnsiConsole.WriteLine();
     }
 
-    private void ParseWord(string word, Settings settings, bool first)
+    private void ParseWord(string word, PlayerSettings settings, bool first)
     {
         if (first)
         {

@@ -36,10 +36,17 @@ bye
 And run it:
 
 ```bash
-demo hello.bash
+demo play hello.bash
 ```
 
 > Note: in order to see commands (lines starting with `$`) you need to press any key and finnaly press `Enter` key to go to the next step.
+
+
+To see the full list of options, run the following command:
+
+```bash
+demo play --help
+```
 
 ## Instructions
 
@@ -99,7 +106,7 @@ hello world
 
 ## Markup
 
-To render a text interminal **demo** uses [Spectre.Console]https://spectreconsole.net(). You can use this library [markup language](https://spectreconsole.net/markup) and [emojis](https://spectreconsole.net/appendix/emojis) to render rich text.
+To render a text interminal **demo** uses [Spectre.Console](https://spectreconsole.net). You can use this library [markup language](https://spectreconsole.net/markup) and [emojis](https://spectreconsole.net/appendix/emojis) to render rich text.
 
 p.e
 ```bash
@@ -113,6 +120,32 @@ p.e
 Hello :globe_showing_europe_africa:!
 # escaped
 [[Hello]]
+```
+
+## Output script
+
+If you want to create a bash script to execute the demo, you can use the following command:
+
+```bash
+demo script hello.script
+```
+
+You can execute the script in the terminal:
+
+```bash
+demo script hello.script | bash
+```
+
+Or you can save it to a file:
+
+```bash
+demo script hello.script -a true > hello.sh
+```
+
+To see the full list of options, run the following command:
+
+```bash
+demo script --help
 ```
 
 ## License

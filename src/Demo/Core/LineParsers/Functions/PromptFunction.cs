@@ -5,7 +5,7 @@ public class PromptFunction : IFunction
     public bool CanExecute(string line)
         => line.StartsWith("prompt", StringComparison.OrdinalIgnoreCase);
 
-    public void Execute(string line, Settings settings)
+    public void Execute(string line, PlayerSettings settings)
     {
         settings.Prompt = line.Substring(7)
                               .Replace("\\s", " ")

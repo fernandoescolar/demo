@@ -2,10 +2,10 @@ namespace Demo.Core;
 
 public class Player
 {
-    private readonly Settings _settings;
+    private readonly PlayerSettings _settings;
     private readonly IEnumerable<ILineParser> _lineParsers;
 
-    public Player(Settings settings, IEnumerable<ILineParser> lineParsers)
+    public Player(PlayerSettings settings, IEnumerable<ILineParser> lineParsers)
     {
         _settings = settings;
         _lineParsers = lineParsers;

@@ -5,7 +5,7 @@ public class TitleLineParser : ILineParser
     public bool CanParse(string line)
         => line.StartsWith("#", StringComparison.OrdinalIgnoreCase);
 
-    public void Parse(string line, Settings settings)
+    public void Parse(string line, PlayerSettings settings)
     {
         line = line.Substring(1);
         var rule = new Rule($"[{settings.TitleColor}]{settings.TitlePrefix}{line}[/]")

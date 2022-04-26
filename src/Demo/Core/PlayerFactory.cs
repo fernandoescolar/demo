@@ -1,9 +1,9 @@
 namespace Demo.Core;
 public class PlayerFactory
 {
-    public static Player Create(Settings? settings = null)
+    public static Player Create(PlayerSettings? settings = null)
     {
-        settings = settings ?? new Settings();
+        settings = settings ?? new PlayerSettings();
         return new Player(settings, GetLineParsers());
     }
 

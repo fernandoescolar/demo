@@ -5,7 +5,7 @@ public class DefaultLineParser : ILineParser
     public bool CanParse(string line)
         => true;
 
-    public void Parse(string line, Settings settings)
+    public void Parse(string line, PlayerSettings settings)
     {
         AnsiConsole.Markup(line);
         AnsiConsole.WriteLine();

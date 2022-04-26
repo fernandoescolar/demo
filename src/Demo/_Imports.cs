@@ -1,4 +1,4 @@
-global using Demo;
+global using Demo.Commands;
 global using Demo.Core;
 global using Demo.Core.LineParsers;
 global using Demo.Core.LineParsers.Functions;

@@ -12,7 +12,7 @@ public class FunctionLineParser : ILineParser
     public bool CanParse(string line)
         => line.StartsWith("@", StringComparison.OrdinalIgnoreCase);
 
-    public void Parse(string line, Settings settings)
+    public void Parse(string line, PlayerSettings settings)
     {
         line = line.Substring(1);
         foreach(var function in _functions)
