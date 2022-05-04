@@ -11,16 +11,17 @@ public class CommandLineParser : ILineParser
         AnsiConsole.Markup(settings.Prompt);
         var arguments = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         var first = true;
+        InputReader.ResetCommand();
         foreach (var word in arguments)
         {
             ParseWord(word, settings, first);
             first = false;
-            Console.ReadKey(true);
+            InputReader.ReadKey();
             AnsiConsole.Write(" ");
             AnsiConsole.ResetColors();
         }
 
-        WaitEnter();
+        InputReader.WaitEnter();
 
         AnsiConsole.WriteLine();
     }
@@ -42,9 +43,9 @@ public class CommandLineParser : ILineParser
 
         if (word.StartsWith("-") && settings.CommandArgumentsBreakLine)
         {
-            Console.ReadKey(true);
+            InputReader.ReadKey();
             AnsiConsole.Write(" \\");
-            Console.ReadKey(true);
+            InputReader.ReadKey();
             AnsiConsole.WriteLine();
         }
 
@@ -55,7 +56,7 @@ public class CommandLineParser : ILineParser
                 AnsiConsole.Foreground = Color.Cyan3;
             }
 
-            Console.ReadKey(true);
+            InputReader.ReadKey();
             AnsiConsole.Write(c);
             if (c == '=')
             {
@@ -64,13 +65,34 @@ public class CommandLineParser : ILineParser
         }
     }
 
-    private static void WaitEnter()
+    class InputReader
     {
-        while (Console.ReadKey(true).Key != ConsoleKey.Enter) // wait to enter
+        private static bool Skip = false;
+
+        public static void ReadKey()
         {
-            AnsiConsole.Write(".");
-            Thread.Sleep(100);
-            AnsiConsole.Write("\b \b");
+            if (Skip) return;
+
+            var key = Console.ReadKey(true);
+            if (key.Modifiers == ConsoleModifiers.Control && key.Key == ConsoleKey.Enter)
+            {
+                Skip = true;
+            }
+        }
+
+        public static void WaitEnter()
+        {
+            while (Console.ReadKey(true).Key != ConsoleKey.Enter) // wait to enter
+            {
+                AnsiConsole.Write(".");
+                Thread.Sleep(100);
+                AnsiConsole.Write("\b \b");
+            }
+        }
+
+        public static void ResetCommand()
+        {
+            Skip = false;
         }
     }
 }
