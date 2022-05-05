@@ -74,7 +74,7 @@ public class CommandLineParser : ILineParser
             if (Skip) return;
 
             var key = Console.ReadKey(true);
-            if (key.Modifiers == ConsoleModifiers.Control && key.Key == ConsoleKey.Enter)
+            if (key.Modifiers == ConsoleModifiers.Control && (key.Key == ConsoleKey.Enter || key.Key == ConsoleKey.E))
             {
                 Skip = true;
             }
